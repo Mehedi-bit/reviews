@@ -7,20 +7,46 @@ const Review = () => {
   const {id, name, image, text, job} = people[index];
 
 
-  const prevPerson = () => {
-    if(index !== 0){
-      setIndex(index-1);
-    }
+  // const prevPerson = () => {
+  //   if(index !== 0){
+  //     setIndex(index-1);
+  //   }
+  // }
+  // const nextPerson = () => {
+  //   if(index<people.length-1){
+  //     setIndex(index+1);
+  //   }
+  // }
+  // const randomPerson = () => {
+  //   const randomIndex = Math.floor(Math.random()*people.length);
+  //   setIndex(randomIndex);
+  // }
+
+const checkIndexNumber = (number) => {
+  if(number > people.length - 1){
+    return 0;
   }
+  if(number < 0){
+    return people.length - 1;
+  }
+  return number;
+}
+
   const nextPerson = () => {
-    if(index<people.length-1){
-      setIndex(index+1);
-    }
+    const newIndex = index + 1;
+    const checkedIndex = checkIndexNumber(newIndex);
+    setIndex(checkedIndex);
+  }
+  const prevPerson = () => {
+    const newIndex = index - 1;
+    const checkedIndex = checkIndexNumber(newIndex);
+    setIndex(checkedIndex);  
   }
   const randomPerson = () => {
     const randomIndex = Math.floor(Math.random()*people.length);
     setIndex(randomIndex);
   }
+
 
   return(
     <article className="review">
@@ -44,6 +70,7 @@ const Review = () => {
       </div>
       <button className="random-btn" onClick={randomPerson}> surprise me </button>
     </article>
+    
   )
 };
 
