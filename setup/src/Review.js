@@ -43,8 +43,11 @@ const checkIndexNumber = (number) => {
     setIndex(checkedIndex);  
   }
   const randomPerson = () => {
-    const randomIndex = Math.floor(Math.random()*people.length);
-    setIndex(randomIndex);
+    let randomIndex = Math.floor(Math.random()*people.length);
+    if(randomIndex === index){
+      randomIndex++;
+    }
+    setIndex(checkIndexNumber(randomIndex));
   }
 
 
